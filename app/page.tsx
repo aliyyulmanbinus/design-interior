@@ -20,8 +20,8 @@ export default function Home() {
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center gap-2 font-semibold">
-            <Image src="/placeholder.svg?height=32&width=32" width={32} height={32} alt="Logo" />
-            <span className="text-xl">INTERIOR</span>
+            <Image src="/assets/icon/logo-knt.png" width={50} height={50} alt="Logo KNT" />
+            {/* <span className="text-xl">KNT</span> */}
           </Link>
           <nav className="hidden md:flex gap-6">
             <Link href="#projects" className="text-sm font-medium hover:text-primary">
@@ -70,7 +70,7 @@ export default function Home() {
         <section className="relative">
           <div className="absolute inset-0 z-0">
             <Image
-              src="/placeholder.svg?height=1080&width=1920"
+              src="/assets/bahan/enscape_2021-01-08-08-54-18.png"
               alt="Interior Design Hero"
               fill
               className="object-cover brightness-[0.7]"
@@ -125,42 +125,42 @@ export default function Home() {
               <ProjectCard
                 title="Modern Minimalist Apartment"
                 description="A clean, minimalist design for a city apartment that maximizes space and light."
-                imageSrc="/placeholder.svg?height=600&width=800"
+                imageSrc="/assets/bahan/enscape_2021-01-08-09-07-40.png?height=600&width=800"
                 category="Residential"
                 href="/projects/modern-minimalist"
               />
               <ProjectCard
                 title="Luxury Villa Renovation"
                 description="Complete renovation of a luxury villa with custom furniture and premium finishes."
-                imageSrc="/placeholder.svg?height=600&width=800"
+                imageSrc="/assets/bahan/enscape_2022-06-22-16-00-09.png?height=600&width=800"
                 category="Residential"
                 href="/projects/luxury-villa"
               />
               <ProjectCard
                 title="Boutique Hotel Lobby"
                 description="A welcoming yet sophisticated lobby design for a boutique hotel in the city center."
-                imageSrc="/placeholder.svg?height=600&width=800"
+                imageSrc="/assets/bahan/enscape_2025-01-22-23-44-57.png?height=600&width=800"
                 category="Commercial"
                 href="/projects/boutique-hotel"
               />
               <ProjectCard
                 title="Contemporary Office Space"
                 description="A productive and inspiring workspace designed for a tech startup."
-                imageSrc="/placeholder.svg?height=600&width=800"
+                imageSrc="/assets/bahan/enscape_2022-06-22-16-02-44.png?height=600&width=800"
                 category="Commercial"
                 href="/projects/office-space"
               />
               <ProjectCard
                 title="Scandinavian-Inspired Home"
                 description="A warm and cozy family home with Scandinavian design principles."
-                imageSrc="/placeholder.svg?height=600&width=800"
+                imageSrc="/assets/bahan/enscape_2022-02-11-16-43-45.png?height=600&width=800"
                 category="Residential"
                 href="/projects/scandinavian-home"
               />
               <ProjectCard
                 title="Restaurant Redesign"
                 description="A complete redesign of a popular restaurant to enhance the dining experience."
-                imageSrc="/placeholder.svg?height=600&width=800"
+                imageSrc="/assets/bahan/enscape_2025-01-22-23-42-53.png?height=600&width=800"
                 category="Commercial"
                 href="/projects/restaurant-redesign"
               />
@@ -174,7 +174,7 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="relative aspect-square">
                 <Image
-                  src="/placeholder.svg?height=800&width=800"
+                  src="/assets/bahan/enscape_2025-01-22-23-44-07.png?height=800&width=800"
                   alt="Interior Designer"
                   fill
                   className="object-cover rounded-lg"
