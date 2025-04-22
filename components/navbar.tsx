@@ -50,10 +50,10 @@ export default function Navbar() {
           <div className="md:flex-1 flex justify-center">
             <Link href="/" className="flex items-center">
               <Image
-                src="/placeholder.svg?height=40&width=150&text=KNT+Design"
+                src="/logo-knt-circle.svg?height=150&width=150&text=KNT+Design"
                 alt="KNT Design Interior"
                 width={150}
-                height={40}
+                height={150}
                 className="h-10 w-auto"
               />
             </Link>

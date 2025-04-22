@@ -13,9 +13,9 @@ export default function Home() {
       <section className="container mx-auto px-4 py-12 md:py-24 flex flex-col md:flex-row items-center">
         <div className="w-full md:w-1/2 mb-10 md:mb-0 md:pr-8">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-wider leading-tight mb-8">
-            SOPHISTICATED
+            KURNIA INTERIOR
             <br />
-            URBAN LIVING
+            STUDIO
           </h1>
           <Link href="/contact">
             <Button
@@ -30,7 +30,7 @@ export default function Home() {
         <div className="w-full md:w-1/2 flex justify-center md:justify-end">
           <div className="relative w-full max-w-[500px] aspect-square rounded-full overflow-hidden">
             <Image
-              src="/placeholder.svg?height=800&width=800"
+              src="/logo-knt-circle.svg?height=800&width=800"
               alt="Sophisticated Interior Design"
               fill
               className="object-cover"
@@ -56,7 +56,7 @@ export default function Home() {
               <div key={i} className="group cursor-pointer">
                 <div className="relative w-full aspect-[3/4] overflow-hidden mb-4">
                   <Image
-                    src={`/placeholder.svg?height=600&width=450&text=Project${i}`}
+                    src={`/gambar_portfolio/apartemen_1br/Enscape_2025-02-23-18-22-11.png`}
                     alt={`Featured Project ${i}`}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -172,7 +172,7 @@ export default function Home() {
             <div className="w-full md:w-1/2">
               <div className="relative w-full aspect-square rounded-full overflow-hidden">
                 <Image
-                  src="/placeholder.svg?height=800&width=800&text=About+Us"
+                  src="/logo-knt-circle.svg?height=800&width=800&text=About+Us"
                   alt="KNT Design Interior Team"
                   fill
                   className="object-cover"
@@ -228,7 +228,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
               <Image
-                src="/placeholder.svg?height=40&width=150&text=KNT+Design"
+                src="/logo-knt-circle.svg?height=40&width=150&text=KNT+Design"
                 alt="KNT Design Interior"
                 width={150}
                 height={40}

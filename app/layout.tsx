@@ -19,6 +19,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="icon" href="/logo-knt.png" type="image/png" />
+        <title>kurniainteriorstudio</title>
+        <meta name="description" content="Interior design studio specializing in sophisticated urban living spaces" />
+      </head>
       <body className={inter.className}>
         <ThemeProvider defaultTheme="dark">{children}</ThemeProvider>
       </body>
