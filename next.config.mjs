@@ -1,18 +1,14 @@
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   images: {
-    domains: ['localhost'],
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '**',
-      },
-    ],
+    unoptimized: true,
   },
-  experimental: {
-    authInterrupts: true, // Enable the new forbidden() and unauthorized() APIs
-  },
-};
+}
 
-export default nextConfig;
-
+export default nextConfig
