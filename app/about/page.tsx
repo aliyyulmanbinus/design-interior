@@ -43,7 +43,7 @@ export default function AboutPage() {
           <div className="w-full md:w-1/2">
             <div className="relative w-full aspect-square rounded-full overflow-hidden">
               <Image
-                src="/placeholder.svg?height=800&width=800"
+                src="/logo-knt-circle.svg?height=800&width=800"
                 alt="KNT Design Interior Team"
                 fill
                 className="object-cover"

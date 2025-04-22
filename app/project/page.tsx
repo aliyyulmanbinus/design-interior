@@ -26,7 +26,7 @@ const projects = [
     title: "MODERN APARTMENT DESIGN",
     location: "Jakarta, Indonesia",
     description: "Contemporary one-bedroom apartment with minimalist design and smart storage solutions.",
-    image: "/placeholder.svg?height=600&width=800&text=Apartment+1BR",
+    image: "/gambar_portfolio/apartemen_1br/Enscape_2025-02-23-18-22-11.png",
     category: "apartemen_1br",
   },
   {
@@ -34,7 +34,7 @@ const projects = [
     title: "EXECUTIVE MEETING ROOM",
     location: "Jakarta, Indonesia",
     description: "Sophisticated meeting space designed for productivity and impression.",
-    image: "/placeholder.svg?height=600&width=800&text=Meeting+Room",
+    image: "/gambar_portfolio/apartemen_1br/Enscape_2025-02-23-18-23-08.png",
     category: "meeting_room",
   },
   {
@@ -42,7 +42,7 @@ const projects = [
     title: "LUXURY RESIDENCE",
     location: "Bandung, Indonesia",
     description: "Custom luxury home with bespoke furniture and elegant finishes.",
-    image: "/placeholder.svg?height=600&width=800&text=Mr.+Hartono",
+    image: "/gambar_portfolio/meeting_room/Enscape_2025-01-22-23-42-53.png",
     category: "mr_hartono",
   },
   {
@@ -50,7 +50,7 @@ const projects = [
     title: "CONTEMPORARY VILLA",
     location: "Bali, Indonesia",
     description: "Modern villa with open-concept living and natural materials.",
-    image: "/placeholder.svg?height=600&width=800&text=Mr.+Rangga",
+    image: "/gambar_portfolio/mr_hartono/Enscape_2022-02-04-17-12-31.png",
     category: "mr_rangga",
   },
   {
@@ -58,7 +58,7 @@ const projects = [
     title: "MINIMALIST HOME",
     location: "Surabaya, Indonesia",
     description: "Clean, minimalist residence with thoughtful space planning.",
-    image: "/placeholder.svg?height=600&width=800&text=Mr.+Wisnu",
+    image: "/gambar_portfolio/mr_rangga/Enscape_2021-01-08-08-54-18.png",
     category: "mr_wisnu",
   },
   {
@@ -66,7 +66,7 @@ const projects = [
     title: "ELEGANT TOWNHOUSE",
     location: "Jakarta, Indonesia",
     description: "Sophisticated townhouse with custom millwork and designer furnishings.",
-    image: "/placeholder.svg?height=600&width=800&text=Mrs.+Lidya",
+    image: "/gambar_portfolio/mr_wisnu/Enscape_2022-01-22-09-36-16.png",
     category: "mrs_lidya",
   },
   {
@@ -74,7 +74,7 @@ const projects = [
     title: "URBAN LOFT",
     location: "Jakarta, Indonesia",
     description: "Industrial-inspired loft with high ceilings and custom built-ins.",
-    image: "/placeholder.svg?height=600&width=800&text=Mrs.+Nike",
+    image: "/gambar_portfolio/mrs_lidya/5.png",
     category: "mrs_nike",
   },
   {
@@ -82,7 +82,7 @@ const projects = [
     title: "CORPORATE HEADQUARTERS",
     location: "Jakarta, Indonesia",
     description: "Modern office space designed for collaboration and brand representation.",
-    image: "/placeholder.svg?height=600&width=800&text=Office+BCA",
+    image: "/gambar_portfolio/mrs_nike/Enscape_2025-01-08-21-04-55.png",
     category: "office_bca",
   },
   {
@@ -90,7 +90,7 @@ const projects = [
     title: "STUDIO APARTMENT",
     location: "Jakarta, Indonesia",
     description: "Efficient studio apartment with multi-functional furniture.",
-    image: "/placeholder.svg?height=600&width=800&text=Apartment+1BR+2",
+    image: "/gambar_portfolio/office_bca/Enscape_2022-06-22-15-39-14.png",
     category: "apartemen_1br",
   },
   {
@@ -98,7 +98,7 @@ const projects = [
     title: "CONFERENCE CENTER",
     location: "Jakarta, Indonesia",
     description: "Large-scale meeting facility with state-of-the-art technology.",
-    image: "/placeholder.svg?height=600&width=800&text=Meeting+Room+2",
+    image: "/gambar_portfolio/office_bca/Enscape_2022-06-22-16-00-09.png",
     category: "meeting_room",
   },
   {
@@ -106,7 +106,7 @@ const projects = [
     title: "PENTHOUSE SUITE",
     location: "Jakarta, Indonesia",
     description: "Luxury penthouse with panoramic views and custom details.",
-    image: "/placeholder.svg?height=600&width=800&text=Mr.+Hartono+2",
+    image: "/gambar_portfolio/meeting_room/Enscape_2025-01-22-23-43-52.png",
     category: "mr_hartono",
   },
   {
@@ -114,7 +114,7 @@ const projects = [
     title: "BEACH HOUSE",
     location: "Bali, Indonesia",
     description: "Coastal retreat with indoor-outdoor living spaces.",
-    image: "/placeholder.svg?height=600&width=800&text=Mr.+Rangga+2",
+    image: "/gambar_portfolio/mr_hartono/Enscape_2022-02-04-17-14-57.png",
     category: "mr_rangga",
   },
 ]
@@ -198,7 +198,7 @@ export default function ProjectPage() {
           </div>
         )}
 
-        <div className="mt-16 text-center">
+        {/* <div className="mt-16 text-center">
           <h2 className="text-2xl md:text-3xl font-light mb-6">FEATURED CLIENTS</h2>
           <div className="flex flex-wrap justify-center gap-12">
             {[1, 2, 3, 4, 5].map((i) => (
@@ -212,7 +212,7 @@ export default function ProjectPage() {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </section>
     </main>
   )
