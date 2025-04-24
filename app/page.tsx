@@ -93,8 +93,15 @@ export default function Home() {
                   ? "/gambar_portfolio/meeting_room/Enscape_2025-01-22-23-42-53.png"
                   : "/gambar_portfolio/mr_hartono/Enscape_2022-02-04-17-12-31.png";
 
+              const linkHref =
+                i === 1
+                  ? "https://kurniainteriorstudio.vercel.app/project/apartemen_1br"
+                  : i === 2
+                  ? "https://kurniainteriorstudio.vercel.app/project/meeting_room"
+                  : "https://kurniainteriorstudio.vercel.app/project/mr_hartono";
+
               return (
-                <div key={i} className="group cursor-pointer">
+                <Link key={i} href={linkHref} className="group cursor-pointer">
                   <div className="relative w-full aspect-[3/4] overflow-hidden mb-4">
                     <Image
                       src={imageSrc}
@@ -110,7 +117,7 @@ export default function Home() {
                     {i === 1 ? "APARTEMEN 1BR (ONE BEDROOM)" : i === 2 ? "MEETING ROOM" : "MR. HARTONO"}
                   </h3>
                   {/* <p className="text-sm text-muted-foreground">Jakarta, Indonesia</p> */}
-                </div>
+                </Link>
               );
             })}
           </div>
