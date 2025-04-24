@@ -138,7 +138,7 @@ const projectsData: ProjectsDataType = {
     title: "MRS. NIKE",
     location: "Jakarta, Indonesia",
     description:
-      "Industrial-inspired loft with high ceilings and custom built-ins. This converted loft space celebrates its industrial heritage with exposed brick, concrete surfaces, and steel details. These raw elements are balanced with warm woods, plush textiles, and carefully selected furnishings.",
+      "Inspired by traditional Japanese design, this interior emphasizes balance, nature, and intentional living. Natural wood tones, tatami textures, and sliding shoji screens evoke a serene atmosphere. With an open layout and minimal decor, the space invites mindfulness and calm—an ideal retreat from the chaos of daily life.",
     images: [
       "/gambar_portfolio/mrs_nike/Enscape_2025-01-08-21-04-55.png",
       "/gambar_portfolio/mrs_nike/Enscape_2025-01-21-23-05-00.png",
