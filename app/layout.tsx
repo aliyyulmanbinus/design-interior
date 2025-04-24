@@ -7,7 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Kurnia Interior Studio",
+  title: "kurniainteriorstudio",
   description: "Interior design studio specializing in sophisticated urban living spaces",
     generator: 'v0.dev'
 }
@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/logo-knt.png" type="image/png" />
-        <title>kurniainteriorstudio</title>
+        <title>Kurnia Interior Studio</title>
         <meta name="description" content="Interior design studio specializing in sophisticated urban living spaces" />
       </head>
       <body className={inter.className}>
