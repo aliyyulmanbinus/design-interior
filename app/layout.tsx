@@ -7,7 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "kurniainteriorstudio",
+  title: "Kurnia Interior Studio",
   description: "Interior design studio specializing in sophisticated urban living spaces",
     generator: 'v0.dev'
 }
