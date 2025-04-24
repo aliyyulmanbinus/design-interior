@@ -107,9 +107,9 @@ export default function Home() {
                     </div>
                   </div>
                   <h3 className="text-xl font-light mb-1">
-                    {i === 1 ? "LUXURY APARTMENT" : i === 2 ? "MODERN VILLA" : "BOUTIQUE HOTEL"}
+                    {i === 1 ? "APARTEMEN 1BR (ONE BEDROOM)" : i === 2 ? "MEETING ROOM" : "MR. HARTONO"}
                   </h3>
-                  <p className="text-sm text-muted-foreground">Jakarta, Indonesia</p>
+                  {/* <p className="text-sm text-muted-foreground">Jakarta, Indonesia</p> */}
                 </div>
               );
             })}
@@ -164,7 +164,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-16 md:py-24 bg-secondary">
+      {/* <section className="py-16 md:py-24 bg-secondary">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-light tracking-wider text-center mb-16">CLIENT TESTIMONIALS</h2>
 
@@ -205,7 +205,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* About Summary */}
       <section className="py-16 md:py-24">

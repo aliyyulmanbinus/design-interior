@@ -178,7 +178,7 @@ export default function ContactPage() {
           <div className="w-full md:w-1/2">
             <div className="relative w-full aspect-square md:aspect-auto md:h-[300px] mb-8">
               <Image
-                src="/placeholder.svg?height=600&width=800&text=Map"
+                src="/gambar_portfolio/contactuslogo.png"
                 alt="Office Location"
                 fill
                 className="object-cover"
