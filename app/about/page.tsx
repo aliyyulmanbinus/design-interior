@@ -128,7 +128,7 @@ export default function AboutPage() {
               <address className="not-italic">
                 <p className="text-sm text-muted-foreground mb-2">Indonesia</p>
                 <p className="text-sm text-muted-foreground mb-2">+62 858 4202 7673</p>
-                <p className="text-sm text-muted-foreground">Kntdesaigninterior@gmail.com</p>
+                <p className="text-sm text-muted-foreground">Kntdesigninterior@gmail.com</p>
               </address>
             </div>
 

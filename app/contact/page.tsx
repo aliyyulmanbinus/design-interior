@@ -1,15 +1,15 @@
 "use client"
 
 import type React from "react"
-
-import { useState } from "react"
+import Link from "next/link"
+import { useState, useTransition } from "react"
 import Image from "next/image"
 import Navbar from "@/components/navbar"
-import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { MapPin, Phone, Mail, Clock, Facebook, Instagram } from "lucide-react"
+import { sendEmail } from "@/app/actions/email"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -19,23 +19,58 @@ export default function ContactPage() {
     subject: "",
     message: "",
   })
+  const [isPending, startTransition] = useTransition()
+  const [formStatus, setFormStatus] = useState<{
+    success?: boolean
+    message?: string
+  }>({})
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission here
-    console.log(formData)
-    alert("Thank you for your message. We will contact you soon!")
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      subject: "",
-      message: "",
+
+    // Reset status
+    setFormStatus({})
+
+    startTransition(async () => {
+      try {
+        // Create form data to send
+        const formDataToSend = new FormData()
+        Object.entries(formData).forEach(([key, value]) => {
+          formDataToSend.append(key, value)
+        })
+
+        // Send the form data using the server action
+        const result = await sendEmail(formDataToSend)
+
+        if (result.success) {
+          setFormStatus({
+            success: true,
+            message: "Thank you for your message. We will contact you soon!",
+          })
+
+          // Reset form
+          setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            subject: "",
+            message: "",
+          })
+        } else {
+          throw new Error(result.error || "Failed to send message")
+        }
+      } catch (error) {
+        console.error("Error sending message:", error)
+        setFormStatus({
+          success: false,
+          message: "There was an error sending your message. Please try again later.",
+        })
+      }
     })
   }
 
@@ -122,11 +157,20 @@ export default function ContactPage() {
                 />
               </div>
 
+              {formStatus.message && (
+                <div
+                  className={`p-4 rounded-md ${formStatus.success ? "bg-green-500/20 text-black font-medium" : "bg-red-500/20 text-black-200"}`}
+                >
+                  {formStatus.message}
+                </div>
+              )}
+
               <Button
                 type="submit"
                 className="bg-foreground text-background hover:bg-foreground/90 rounded-none px-8 py-6 w-full md:w-auto"
+                disabled={isPending}
               >
-                Send Message
+                {isPending ? "Sending..." : "Send Message"}
               </Button>
             </form>
           </div>
@@ -134,7 +178,7 @@ export default function ContactPage() {
           <div className="w-full md:w-1/2">
             <div className="relative w-full aspect-square md:aspect-auto md:h-[300px] mb-8">
               <Image
-                src="/gambar_portfolio/contactustoni.svg"
+                src="/placeholder.svg?height=600&width=800&text=Map"
                 alt="Office Location"
                 fill
                 className="object-cover"
@@ -162,7 +206,7 @@ export default function ContactPage() {
                 <Mail className="w-5 h-5 mt-1 text-muted-foreground" />
                 <div>
                   <h3 className="font-medium mb-1">Email</h3>
-                  <p className="text-sm text-muted-foreground">Kntdesaigninterior@gmail.com</p>
+                  <p className="text-sm text-muted-foreground">cahcanvas@gmail.com</p>
                 </div>
               </div>
 
@@ -255,7 +299,7 @@ export default function ContactPage() {
               <address className="not-italic">
                 <p className="text-sm text-muted-foreground mb-2">Indonesia</p>
                 <p className="text-sm text-muted-foreground mb-2">+62 858 4202 7673</p>
-                <p className="text-sm text-muted-foreground">Kntdesaigninterior@gmail.com</p>
+                <p className="text-sm text-muted-foreground">Kntdesigninterior@gmail.com</p>
               </address>
             </div>
 
