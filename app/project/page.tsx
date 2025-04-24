@@ -7,17 +7,60 @@ import { cn } from "@/lib/utils"
 import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
 
-// Define project categories
-const categories = [
+// Define project categories organized by groups
+interface Category {
+  id: string
+  name: string
+}
+
+interface CategoryGroup {
+  id: string
+  name: string
+  isGroup: boolean
+  categories: Category[]
+}
+
+// Define project categories organized by groups
+const categoryGroups: CategoryGroup[] = [
+  {
+    id: "all",
+    name: "All Projects",
+    isGroup: false,
+    categories: [],
+  },
+  {
+    id: "commercial",
+    name: "Commercial",
+    isGroup: true,
+    categories: [{ id: "apartemen_1br", name: "Apartemen 1BR" }],
+  },
+  {
+    id: "residence",
+    name: "Residence",
+    isGroup: true,
+    categories: [
+      { id: "mr_hartono", name: "Mr. Hartono" },
+      { id: "mr_rangga", name: "Mr. Rangga" },
+      { id: "mr_wisnu", name: "Mr. Wisnu" },
+      { id: "mrs_lidya", name: "Mrs. Lidya" },
+      { id: "mrs_nike", name: "Mrs. Nike" },
+    ],
+  },
+  {
+    id: "corporate",
+    name: "Corporate",
+    isGroup: true,
+    categories: [
+      { id: "meeting_room", name: "Meeting Room" },
+      { id: "office_bca", name: "Office BCA" },
+    ],
+  },
+]
+
+// Flatten categories for filtering
+const allCategories = [
   { id: "all", name: "All Projects" },
-  { id: "apartemen_1br", name: "Apartemen 1BR" },
-  { id: "meeting_room", name: "Meeting Room" },
-  { id: "mr_hartono", name: "Mr. Hartono" },
-  { id: "mr_rangga", name: "Mr. Rangga" },
-  { id: "mr_wisnu", name: "Mr. Wisnu" },
-  { id: "mrs_lidya", name: "Mrs. Lidya" },
-  { id: "mrs_nike", name: "Mrs. Nike" },
-  { id: "office_bca", name: "Office BCA" },
+  ...categoryGroups.flatMap((group) => (group.isGroup ? group.categories : [])),
 ]
 
 // Sample projects data with categories
@@ -417,11 +460,31 @@ const projects = [
 ]
 
 export default function ProjectPage() {
+  const [activeGroup, setActiveGroup] = useState("all")
   const [activeCategory, setActiveCategory] = useState("all")
+
+  // Handle group selection
+  const handleGroupClick = (groupId: string) => {
+    setActiveGroup(groupId)
+    setActiveCategory("all")
+  }
+
+  // Handle category selection
+  const handleCategoryClick = (categoryId: string) => {
+    setActiveCategory(categoryId)
+  }
 
   // Filter projects based on active category
   const filteredProjects =
-    activeCategory === "all" ? projects : projects.filter((project) => project.category === activeCategory)
+    activeCategory === "all"
+      ? activeGroup === "all"
+        ? projects
+        : projects.filter((project) => {
+            // Find which group the project's category belongs to
+            const group = categoryGroups.find((g) => g.isGroup && g.categories.some((c) => c.id === project.category))
+            return group?.id === activeGroup
+          })
+      : projects.filter((project) => project.category === activeCategory)
 
   return (
     <main className="min-h-screen bg-background text-foreground">
@@ -430,30 +493,66 @@ export default function ProjectPage() {
       <section className="container mx-auto px-4 py-12 md:py-24">
         <h1 className="text-3xl md:text-4xl font-light tracking-wider mb-12 text-center">OUR PROJECTS</h1>
 
-        {/* Category Navigation */}
-        <div className="mb-12 overflow-x-auto">
-          <div className="flex space-x-2 md:space-x-4 min-w-max md:justify-center pb-2">
-            {categories.map((category) => (
+        {/* Group Navigation */}
+        <div className="mb-8 overflow-x-auto">
+          <div className="flex space-x-4 md:space-x-6 min-w-max md:justify-center pb-2">
+            {categoryGroups.map((group) => (
               <button
-                key={category.id}
-                onClick={() => setActiveCategory(category.id)}
+                key={group.id}
+                onClick={() => handleGroupClick(group.id)}
                 className={cn(
-                  "px-4 py-2 text-sm md:text-base whitespace-nowrap transition-all duration-300",
-                  activeCategory === category.id
+                  "px-6 py-3 text-sm md:text-base whitespace-nowrap transition-all duration-300",
+                  activeGroup === group.id
                     ? "bg-foreground text-background font-medium"
                     : "bg-secondary text-foreground hover:bg-accent",
                 )}
               >
-                {category.name}
+                {group.name}
               </button>
             ))}
           </div>
         </div>
 
+        {/* Category Navigation - Only show for the selected group */}
+        {activeGroup !== "all" && (
+          <div className="mb-12 overflow-x-auto">
+            <div className="flex space-x-2 md:space-x-4 min-w-max md:justify-center pb-2">
+              <button
+                onClick={() => handleCategoryClick("all")}
+                className={cn(
+                  "px-4 py-2 text-sm md:text-base whitespace-nowrap transition-all duration-300",
+                  activeCategory === "all"
+                    ? "bg-foreground text-background font-medium"
+                    : "bg-secondary text-foreground hover:bg-accent",
+                )}
+              >
+                All {activeGroup.charAt(0).toUpperCase() + activeGroup.slice(1)}
+              </button>
+
+              {categoryGroups
+                .find((g) => g.id === activeGroup)
+                ?.categories?.map((category) => (
+                  <button
+                    key={category.id}
+                    onClick={() => handleCategoryClick(category.id)}
+                    className={cn(
+                      "px-4 py-2 text-sm md:text-base whitespace-nowrap transition-all duration-300",
+                      activeCategory === category.id
+                        ? "bg-foreground text-background font-medium"
+                        : "bg-secondary text-foreground hover:bg-accent",
+                    )}
+                  >
+                    {category.name}
+                  </button>
+                ))}
+            </div>
+          </div>
+        )}
+
         {/* Projects Grid */}
         <AnimatePresence mode="wait">
           <motion.div
-            key={activeCategory}
+            key={`${activeGroup}-${activeCategory}`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -466,22 +565,26 @@ export default function ProjectPage() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
-                className="group cursor-pointer"
               >
-                <div className="relative w-full aspect-[4/3] overflow-hidden mb-4">
-                  <Image
-                    src={project.image || "/placeholder.svg"}
-                    alt={project.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                    <span className="text-white text-lg font-medium">View Project</span>
+                {/* Make the entire card a link to the project detail page */}
+                <Link href={`/project/${project.category}`} className="group block cursor-pointer">
+                  <div className="relative w-full aspect-[4/3] overflow-hidden mb-4">
+                    <Image
+                      src={project.image || "/placeholder.svg"}
+                      alt={project.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    {/* Text overlay that animates from bottom on hover */}
+                    <div className="absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-6">
+                      <div className="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
+                        <h3 className="text-white text-xl font-medium text-center">{project.title}</h3>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <h2 className="text-xl font-light mb-1">{project.title}</h2>
-                <p className="text-sm text-muted-foreground mb-2">{project.location}</p>
-                <p className="text-sm">{project.description}</p>
+                  {/* Project title shown below the image */}
+                  <h2 className="text-xl font-light">{project.title}</h2>
+                </Link>
               </motion.div>
             ))}
           </motion.div>
@@ -495,7 +598,7 @@ export default function ProjectPage() {
           </div>
         )}
 
-        {/* <div className="mt-16 text-center">
+        <div className="mt-16 text-center">
           <h2 className="text-2xl md:text-3xl font-light mb-6">FEATURED CLIENTS</h2>
           <div className="flex flex-wrap justify-center gap-12">
             {[1, 2, 3, 4, 5].map((i) => (
@@ -509,8 +612,9 @@ export default function ProjectPage() {
               </div>
             ))}
           </div>
-        </div> */}
+        </div>
       </section>
+
       {/* Footer */}
       <footer className="py-12 border-t border-border">
         <div className="container mx-auto px-4">
