@@ -4,7 +4,7 @@ import { Resend } from "resend"
 
 // Initialize Resend - in production you would use an environment variable
 // You'll need to sign up at https://resend.com to get an API key
-const resend = new Resend("re_Mn19Dn9P_F4DqQQvRZbGb3W4959jvpatC") // Replace with your actual API key
+const resend = new Resend("re_eCrYjxVv_Eyj5XfjhdwqQRpMfqpZtUzEk") // Replace with your actual API key
 
 export async function sendEmail(formData: FormData) {
   try {
@@ -25,7 +25,7 @@ export async function sendEmail(formData: FormData) {
     // Send email using Resend
     const { data, error } = await resend.emails.send({
       from: "Contact Form <onboarding@resend.dev>",
-      to: ["aliyyulmanbinus@gmail.com"],
+      to: ["kntdesigninterior@gmail.com"],
       subject: `Contact Form: ${subject}`,
       text: `
         Name: ${name}
