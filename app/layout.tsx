@@ -3,6 +3,7 @@ import "./globals.css"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
+import WhatsAppButton from "@/components/whatsapp-button" // Added import for WhatsApp button
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -26,6 +27,8 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <ThemeProvider defaultTheme="dark">{children}</ThemeProvider>
+        {children}
+        <WhatsAppButton /> {/* Added WhatsApp button component */}
       </body>
     </html>
   )
