@@ -10,7 +10,6 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "kurniainteriorstudio",
   description: "Interior design studio specializing in sophisticated urban living spaces",
-    // generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -25,8 +24,9 @@ export default function RootLayout({
         <title>Kurnia Interior Studio</title>
         <meta name="description" content="Interior design studio specializing in sophisticated urban living spaces" />
       </head>
+
       <body className={inter.className}>
-        <ThemeProvider defaultTheme="light">{children}
+        <ThemeProvider defaultTheme="dark">
           {children}
           <WhatsAppButton /> {/* Added WhatsApp button component */}
         </ThemeProvider>
